@@ -1,0 +1,19 @@
+
+global 
+	text
+
+procedure parseLine(line)
+	line ? {
+		while tab(upto(text)) do {
+			write(tab(many(&letters)))
+		}
+	}
+end
+
+procedure main(args)
+	text := &letters ++ &digits ++ ';:,.\"'
+	filename := args[1]
+	file := open(filename, "r")
+	while line := read(file) do parseLine(line)
+		
+end
