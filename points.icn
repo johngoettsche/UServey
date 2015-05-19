@@ -1,0 +1,11 @@
+
+
+class point(id, n, e, el, des)
+
+initially(ID, N, E, El, Des)
+	id := ID
+	n := N
+	e := E
+	el := El
+	des := Des
+end
