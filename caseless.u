@@ -1,0 +1,843 @@
+version	U12.1.00
+uid	caseless.u1-1432085858-0
+impl	local
+global	6
+	0,000005,caseless__anycl,4
+	1,000005,caseless__balcl,6
+	2,000005,caseless__findcl,4
+	3,000005,caseless__manycl,4
+	4,000005,caseless__matchcl,4
+	5,000005,caseless__uptocl,4
+
+proc caseless__anycl
+	local	0,001000,c
+	local	1,001000,s
+	local	2,001000,i1
+	local	3,001000,i2
+	local	4,000000,cset
+	local	5,000000,map
+	local	6,000000,string
+	local	7,000000,any
+	declend
+	filen	caseless.icn
+	line	67
+	colm	11
+	synt	any
+	mark	L1
+	pnull
+	var	0
+	var	4
+	var	5
+	var	4
+	var	0
+	line	69
+	colm	27
+	synt	any
+	invoke	1
+	line	69
+	colm	22
+	synt	any
+	invoke	1
+	line	69
+	colm	18
+	synt	any
+	invoke	1
+	line	69
+	colm	11
+	synt	any
+	asgn
+	unmark
+lab L1
+	mark	L2
+	pnull
+	pnull
+	var	2
+	line	70
+	colm	9
+	synt	any
+	null
+	pnull
+	var	1
+	line	70
+	colm	17
+	synt	any
+	null
+	pop
+	line	70
+	colm	22
+	synt	any
+	keywd	pos
+	line	70
+	colm	13
+	synt	any
+	asgn
+	unmark
+lab L2
+	mark	L3
+	pnull
+	var	1
+	var	5
+	mark	L4
+	var	6
+	var	1
+	line	71
+	colm	24
+	synt	any
+	invoke	1
+	line	71
+	colm	28
+	synt	any
+	esusp
+	goto	L5
+lab L4
+	pnull
+	var	1
+	line	71
+	colm	31
+	synt	any
+	null
+	pop
+	line	71
+	colm	36
+	synt	any
+	keywd	subject
+lab L5
+	line	71
+	colm	17
+	synt	any
+	invoke	1
+	line	71
+	colm	11
+	synt	any
+	asgn
+	unmark
+lab L3
+	mark	L6
+	mark	L7
+	var	7
+	var	0
+	var	1
+	var	2
+	var	3
+	line	73
+	colm	19
+	synt	any
+	invoke	4
+	line	73
+	colm	9
+	synt	any
+	pret
+lab L7
+	synt	any
+	pfail
+	unmark
+lab L6
+	pnull
+	line	75
+	colm	1
+	synt	any
+	pfail
+	end
+proc caseless__balcl
+	local	0,001000,c1
+	local	1,001000,c2
+	local	2,001000,c3
+	local	3,001000,s
+	local	4,001000,i1
+	local	5,001000,i2
+	local	6,000000,cset
+	local	7,000000,map
+	local	8,000000,string
+	local	9,000000,bal
+	declend
+	line	78
+	colm	12
+	synt	any
+	mark	L1
+	pnull
+	var	0
+	var	6
+	var	7
+	var	6
+	var	0
+	line	80
+	colm	28
+	synt	any
+	invoke	1
+	line	80
+	colm	23
+	synt	any
+	invoke	1
+	line	80
+	colm	19
+	synt	any
+	invoke	1
+	line	80
+	colm	12
+	synt	any
+	asgn
+	unmark
+lab L1
+	mark	L2
+	pnull
+	var	1
+	var	6
+	var	7
+	var	6
+	var	1
+	line	81
+	colm	28
+	synt	any
+	invoke	1
+	line	81
+	colm	23
+	synt	any
+	invoke	1
+	line	81
+	colm	19
+	synt	any
+	invoke	1
+	line	81
+	colm	12
+	synt	any
+	asgn
+	unmark
+lab L2
+	mark	L3
+	pnull
+	var	2
+	var	6
+	var	7
+	var	6
+	var	2
+	line	82
+	colm	28
+	synt	any
+	invoke	1
+	line	82
+	colm	23
+	synt	any
+	invoke	1
+	line	82
+	colm	19
+	synt	any
+	invoke	1
+	line	82
+	colm	12
+	synt	any
+	asgn
+	unmark
+lab L3
+	mark	L4
+	pnull
+	pnull
+	var	4
+	line	83
+	colm	9
+	synt	any
+	null
+	pnull
+	var	3
+	line	83
+	colm	17
+	synt	any
+	null
+	pop
+	line	83
+	colm	22
+	synt	any
+	keywd	pos
+	line	83
+	colm	13
+	synt	any
+	asgn
+	unmark
+lab L4
+	mark	L5
+	pnull
+	var	3
+	var	7
+	mark	L6
+	var	8
+	var	3
+	line	84
+	colm	24
+	synt	any
+	invoke	1
+	line	84
+	colm	28
+	synt	any
+	esusp
+	goto	L7
+lab L6
+	pnull
+	var	3
+	line	84
+	colm	31
+	synt	any
+	null
+	pop
+	line	84
+	colm	36
+	synt	any
+	keywd	subject
+lab L7
+	line	84
+	colm	17
+	synt	any
+	invoke	1
+	line	84
+	colm	11
+	synt	any
+	asgn
+	unmark
+lab L5
+	mark	L8
+	line	86
+	colm	9
+	synt	suspend
+	mark0
+	var	9
+	var	0
+	var	1
+	var	2
+	var	3
+	var	4
+	var	5
+	line	86
+	colm	20
+	synt	any
+	invoke	6
+	line	86
+	colm	9
+	synt	any
+	psusp
+	pop
+lab L9
+	efail
+lab L10
+	line	86
+	colm	9
+	synt	endsuspend
+	unmark
+lab L8
+	pnull
+	line	88
+	colm	1
+	synt	any
+	pfail
+	end
+proc caseless__findcl
+	local	0,001000,s1
+	local	1,001000,s2
+	local	2,001000,i1
+	local	3,001000,i2
+	local	4,000000,map
+	local	5,000000,string
+	local	6,000000,find
+	declend
+	line	91
+	colm	12
+	synt	any
+	mark	L1
+	pnull
+	var	0
+	var	4
+	var	5
+	var	0
+	line	93
+	colm	25
+	synt	any
+	invoke	1
+	line	93
+	colm	18
+	synt	any
+	invoke	1
+	line	93
+	colm	12
+	synt	any
+	asgn
+	unmark
+lab L1
+	mark	L2
+	pnull
+	pnull
+	var	2
+	line	94
+	colm	9
+	synt	any
+	null
+	pnull
+	var	1
+	line	94
+	colm	17
+	synt	any
+	null
+	pop
+	line	94
+	colm	23
+	synt	any
+	keywd	pos
+	line	94
+	colm	13
+	synt	any
+	asgn
+	unmark
+lab L2
+	mark	L3
+	pnull
+	var	1
+	var	4
+	mark	L4
+	var	5
+	var	1
+	line	95
+	colm	25
+	synt	any
+	invoke	1
+	line	95
+	colm	30
+	synt	any
+	esusp
+	goto	L5
+lab L4
+	pnull
+	var	1
+	line	95
+	colm	33
+	synt	any
+	null
+	pop
+	line	95
+	colm	39
+	synt	any
+	keywd	subject
+lab L5
+	line	95
+	colm	18
+	synt	any
+	invoke	1
+	line	95
+	colm	12
+	synt	any
+	asgn
+	unmark
+lab L3
+	mark	L6
+	line	97
+	colm	9
+	synt	suspend
+	mark0
+	var	6
+	var	0
+	var	1
+	var	2
+	var	3
+	line	97
+	colm	21
+	synt	any
+	invoke	4
+	line	97
+	colm	9
+	synt	any
+	psusp
+	pop
+lab L7
+	efail
+lab L8
+	line	97
+	colm	9
+	synt	endsuspend
+	unmark
+lab L6
+	pnull
+	line	99
+	colm	1
+	synt	any
+	pfail
+	end
+proc caseless__manycl
+	local	0,001000,c
+	local	1,001000,s
+	local	2,001000,i1
+	local	3,001000,i2
+	local	4,000000,cset
+	local	5,000000,map
+	local	6,000000,string
+	local	7,000000,many
+	declend
+	line	102
+	colm	12
+	synt	any
+	mark	L1
+	pnull
+	var	0
+	var	4
+	var	5
+	var	4
+	var	0
+	line	104
+	colm	27
+	synt	any
+	invoke	1
+	line	104
+	colm	22
+	synt	any
+	invoke	1
+	line	104
+	colm	18
+	synt	any
+	invoke	1
+	line	104
+	colm	11
+	synt	any
+	asgn
+	unmark
+lab L1
+	mark	L2
+	pnull
+	pnull
+	var	2
+	line	105
+	colm	9
+	synt	any
+	null
+	pnull
+	var	1
+	line	105
+	colm	17
+	synt	any
+	null
+	pop
+	line	105
+	colm	22
+	synt	any
+	keywd	pos
+	line	105
+	colm	13
+	synt	any
+	asgn
+	unmark
+lab L2
+	mark	L3
+	pnull
+	var	1
+	var	5
+	mark	L4
+	var	6
+	var	1
+	line	106
+	colm	24
+	synt	any
+	invoke	1
+	line	106
+	colm	28
+	synt	any
+	esusp
+	goto	L5
+lab L4
+	pnull
+	var	1
+	line	106
+	colm	31
+	synt	any
+	null
+	pop
+	line	106
+	colm	36
+	synt	any
+	keywd	subject
+lab L5
+	line	106
+	colm	17
+	synt	any
+	invoke	1
+	line	106
+	colm	11
+	synt	any
+	asgn
+	unmark
+lab L3
+	mark	L6
+	mark	L7
+	var	7
+	var	0
+	var	1
+	var	2
+	var	3
+	line	108
+	colm	20
+	synt	any
+	invoke	4
+	line	108
+	colm	9
+	synt	any
+	pret
+lab L7
+	synt	any
+	pfail
+	unmark
+lab L6
+	pnull
+	line	110
+	colm	1
+	synt	any
+	pfail
+	end
+proc caseless__matchcl
+	local	0,001000,s1
+	local	1,001000,s2
+	local	2,001000,i1
+	local	3,001000,i2
+	local	4,000000,map
+	local	5,000000,string
+	local	6,000000,match
+	declend
+	line	113
+	colm	12
+	synt	any
+	mark	L1
+	pnull
+	var	0
+	var	4
+	var	5
+	var	0
+	line	115
+	colm	25
+	synt	any
+	invoke	1
+	line	115
+	colm	18
+	synt	any
+	invoke	1
+	line	115
+	colm	12
+	synt	any
+	asgn
+	unmark
+lab L1
+	mark	L2
+	pnull
+	pnull
+	var	2
+	line	116
+	colm	9
+	synt	any
+	null
+	pnull
+	var	1
+	line	116
+	colm	17
+	synt	any
+	null
+	pop
+	line	116
+	colm	23
+	synt	any
+	keywd	pos
+	line	116
+	colm	13
+	synt	any
+	asgn
+	unmark
+lab L2
+	mark	L3
+	pnull
+	var	1
+	var	4
+	mark	L4
+	var	5
+	var	1
+	line	117
+	colm	25
+	synt	any
+	invoke	1
+	line	117
+	colm	30
+	synt	any
+	esusp
+	goto	L5
+lab L4
+	pnull
+	var	1
+	line	117
+	colm	33
+	synt	any
+	null
+	pop
+	line	117
+	colm	39
+	synt	any
+	keywd	subject
+lab L5
+	line	117
+	colm	18
+	synt	any
+	invoke	1
+	line	117
+	colm	12
+	synt	any
+	asgn
+	unmark
+lab L3
+	mark	L6
+	mark	L7
+	var	6
+	var	0
+	var	1
+	var	2
+	var	3
+	line	119
+	colm	21
+	synt	any
+	invoke	4
+	line	119
+	colm	9
+	synt	any
+	pret
+lab L7
+	synt	any
+	pfail
+	unmark
+lab L6
+	pnull
+	line	121
+	colm	1
+	synt	any
+	pfail
+	end
+proc caseless__uptocl
+	local	0,001000,c
+	local	1,001000,s
+	local	2,001000,i1
+	local	3,001000,i2
+	local	4,000000,cset
+	local	5,000000,map
+	local	6,000000,string
+	local	7,000000,upto
+	declend
+	line	124
+	colm	12
+	synt	any
+	mark	L1
+	pnull
+	var	0
+	var	4
+	var	5
+	var	4
+	var	0
+	line	126
+	colm	27
+	synt	any
+	invoke	1
+	line	126
+	colm	22
+	synt	any
+	invoke	1
+	line	126
+	colm	18
+	synt	any
+	invoke	1
+	line	126
+	colm	11
+	synt	any
+	asgn
+	unmark
+lab L1
+	mark	L2
+	pnull
+	pnull
+	var	2
+	line	127
+	colm	9
+	synt	any
+	null
+	pnull
+	var	1
+	line	127
+	colm	17
+	synt	any
+	null
+	pop
+	line	127
+	colm	22
+	synt	any
+	keywd	pos
+	line	127
+	colm	13
+	synt	any
+	asgn
+	unmark
+lab L2
+	mark	L3
+	pnull
+	var	1
+	var	5
+	mark	L4
+	var	6
+	var	1
+	line	128
+	colm	24
+	synt	any
+	invoke	1
+	line	128
+	colm	28
+	synt	any
+	esusp
+	goto	L5
+lab L4
+	pnull
+	var	1
+	line	128
+	colm	31
+	synt	any
+	null
+	pop
+	line	128
+	colm	36
+	synt	any
+	keywd	subject
+lab L5
+	line	128
+	colm	17
+	synt	any
+	invoke	1
+	line	128
+	colm	11
+	synt	any
+	asgn
+	unmark
+lab L3
+	mark	L6
+	line	130
+	colm	9
+	synt	suspend
+	mark0
+	var	7
+	var	0
+	var	1
+	var	2
+	var	3
+	line	130
+	colm	21
+	synt	any
+	invoke	4
+	line	130
+	colm	9
+	synt	any
+	psusp
+	pop
+lab L7
+	efail
+lab L8
+	line	130
+	colm	9
+	synt	endsuspend
+	unmark
+lab L6
+	pnull
+	line	132
+	colm	1
+	synt	any
+	pfail
+	end

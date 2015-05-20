@@ -1,19 +1,107 @@
+#import caseless
+
+#package USurvLex
+
+$define DESCRIPTOR 255
+$define CONTROL 1
+$define LINE 2
+$define BEARING 3
+$define DISTANCE 4
+$define POINT 5
+$define GRAMMATICAL 6
+$define NUMERIC 7
+$define DIVISIONAL 7
 
 global 
-	text
+	text,
+	punc,
+	yytext,
+	yytoken
+	
+procedure main(args)
+	local 
+		text,
+		filename,
+		file,
+		line
+		
+	setGlobals()	
+	filename := args[1]
+	file := open(filename, "r")
+	while line := read(file) do tokenizeLine(line)
+end
+	
+procedure setGlobals()
+	text := &letters ++ &digits ++ ';:,.\"\'' #'
+	punc := ';:,.\"\'' #'
+end
 
-procedure parseLine(line)
+procedure parseWord()
+	if yytext == "beginning" then suspend Token("BEGINNING", CONTROL)
+	else if yytext == "thence" then suspend Token("THENCE", CONTROL)
+	else if yytext == "which" then suspend Token("WHICH", CONTROL)
+	else if yytext == "from" then suspend Token("FROM", CONTROL)
+	else if yytext == "bears" then suspend Token("BEARS", CONTROL)
+	
+	else if yytext == "along" then suspend Token("ALONG", LINE)
+	else if yytext == "line" then suspend Token("LINE", LINE)
+	
+	else if yytext == "n" then suspend Token("NORTH", BEARING)
+	else if yytext == "s" then suspend Token("SOUTH", BEARING)
+	else if yytext == "e" then suspend Token("EAST", BEARING)
+	else if yytext == "w" then suspend Token("WEST", BEARING)
+	else if yytext == "north" then suspend Token("NORTH", BEARING)
+	else if yytext == "south" then suspend Token("SOUTH", BEARING)
+	else if yytext == "east" then suspend Token("EAST", BEARING)
+	else if yytext == "west" then suspend Token("WEST", BEARING)
+	
+	else if yytext == "distance" then suspend Token("DISTANCE", DISTANCE)
+	else if yytext == "feet" then suspend Token("FEET", DISTANCE)
+	else if yytext == "foot" then suspend Token("FEET", DISTANCE)
+	else if yytext == "chains" then suspend Token("CHAINS", DISTANCE)
+	else if yytext == "links" then suspend Token("LINKS", DISTANCE)
+	else if yytext == "rods" then suspend Token("RODS", DISTANCE)
+	else if yytext == "meters" then suspend Token("METERS", DISTANCE)
+	
+	else if yytext == "west" then suspend Token("WEST", BEARING)
+	
+	else if yytext == "at" then suspend Token("AT", POINT)
+	else if yytext == "marking" then suspend Token("MARKING", POINT)
+	else if yytext == "point" then suspend Token("POINT", POINT)
+	else if yytext == "corner" then suspend Token("CORNER", POINT)
+	
+	else if yytext == "northeast" then suspend Token("NORTHEAST", DIVISIONAL)
+	else if yytext == "southeast" then suspend Token("SOUTHEAST", DIVISIONAL)
+	else if yytext == "southwest" then suspend Token("SOUTHWEST", DIVISIONAL)
+	else if yytext == "northwest" then suspend Token("NORTHWEST", DIVISIONAL)
+	else if yytext == "quarter" then suspend Token("QUARTER", DIVISIONAL)
+	else if yytext == "half" then suspend Token("HALF", DIVISIONAL)
+	else if yytext == "lot" then suspend Token("LOT", DIVISIONAL)
+	else if yytext == "government" then suspend Token("GOVERNMENT", DIVISIONAL)
+	else if yytext == "parcel" then suspend Token("PARCEL", DIVISIONAL)
+	else if yytext == "tract" then suspend Token("TRACT", DIVISIONAL)
+	else if yytext == "block" then suspend Token("BLOCK", DIVISIONAL)
+	else if yytext == "piece" then suspend Token("PIECE", DIVISIONAL)
+	else if yytext == "portion" then suspend Token("PORTION", DIVISIONAL)
+	else if yytext == "subdivision" then suspend Token("SUBDIVISION", DIVISIONAL)
+	
+	else suspend Token(yytext, DESCRIPTOR)
+end
+
+procedure tokenizeLine(line)
 	line ? {
 		while tab(upto(text)) do {
-			write(tab(many(&letters)))
+			(if yytext := tab(many(&letters)) then yytoken := parseWord() ) |
+			(if yytext := tab(many(&digits)) then yytoken := Token(string(yytext), 255) )|
+			(if yytext := tab(any(punc)) then yytoken := Token(yytext, 200) )
+			write(yytoken.label)
 		}
 	}
 end
 
-procedure main(args)
-	text := &letters ++ &digits ++ ';:,.\"'
-	filename := args[1]
-	file := open(filename, "r")
-	while line := read(file) do parseLine(line)
-		
+class Token(label, pri)
+
+initially(l, p)
+	label := l
+	pri := p
 end
