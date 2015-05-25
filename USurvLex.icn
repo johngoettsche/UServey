@@ -1,6 +1,6 @@
 #import caseless
 
-#package USurvLex
+package USurvLex
 
 $define DESCRIPTOR 255
 $define CONTROL 1
@@ -10,7 +10,9 @@ $define DISTANCE 4
 $define POINT 5
 $define GRAMMATICAL 6
 $define NUMERIC 7
-$define DIVISIONAL 7
+$define DIVISIONAL 8
+$define LANDSYSTEM 9
+$define REFERENCE 10
 
 global 
 	text,
@@ -18,33 +20,26 @@ global
 	yytext,
 	yytoken
 	
-procedure main(args)
-	local 
-		text,
-		filename,
-		file,
-		line
-		
-	setGlobals()	
-	filename := args[1]
-	file := open(filename, "r")
-	while line := read(file) do tokenizeLine(line)
-end
-	
 procedure setGlobals()
-	text := &letters ++ &digits ++ ';:,.\"\'' #'
-	punc := ';:,.\"\'' #'
+	text := &letters ++ &digits ++ ';:,.\"\'' #-'
+	punc := ';:,.\"\'' #-'
 end
 
 procedure parseWord()
 	if yytext == "beginning" then suspend Token("BEGINNING", CONTROL)
+	else if yytext == "commencing" then suspend Token("COMMENCING", CONTROL)
+	else if yytext == "terminus" then suspend Token("TERMINUS", CONTROL)
 	else if yytext == "thence" then suspend Token("THENCE", CONTROL)
 	else if yytext == "which" then suspend Token("WHICH", CONTROL)
 	else if yytext == "from" then suspend Token("FROM", CONTROL)
 	else if yytext == "bears" then suspend Token("BEARS", CONTROL)
+	else if yytext == "along" then suspend Token("ALONG", CONTROL)
+	else if yytext == "continueing" then suspend Token("CONTINUEING", CONTROL)
 	
-	else if yytext == "along" then suspend Token("ALONG", LINE)
 	else if yytext == "line" then suspend Token("LINE", LINE)
+	else if yytext == "boundary" then suspend Token("BOUNDARY", LINE)
+	else if yytext == "right" then suspend Token("RIGHT", LINE)
+	else if yytext == "way" then suspend Token("WAY", LINE)
 	
 	else if yytext == "n" then suspend Token("NORTH", BEARING)
 	else if yytext == "s" then suspend Token("SOUTH", BEARING)
@@ -54,6 +49,7 @@ procedure parseWord()
 	else if yytext == "south" then suspend Token("SOUTH", BEARING)
 	else if yytext == "east" then suspend Token("EAST", BEARING)
 	else if yytext == "west" then suspend Token("WEST", BEARING)
+	else if yytext == "due" then suspend Token("DUE", BEARING)
 	
 	else if yytext == "distance" then suspend Token("DISTANCE", DISTANCE)
 	else if yytext == "feet" then suspend Token("FEET", DISTANCE)
@@ -67,6 +63,7 @@ procedure parseWord()
 	
 	else if yytext == "at" then suspend Token("AT", POINT)
 	else if yytext == "marking" then suspend Token("MARKING", POINT)
+	else if yytext == "marked" then suspend Token("MARKED", POINT)
 	else if yytext == "point" then suspend Token("POINT", POINT)
 	else if yytext == "corner" then suspend Token("CORNER", POINT)
 	
@@ -85,6 +82,17 @@ procedure parseWord()
 	else if yytext == "portion" then suspend Token("PORTION", DIVISIONAL)
 	else if yytext == "subdivision" then suspend Token("SUBDIVISION", DIVISIONAL)
 	
+	else if yytext == "section" then suspend Token("SECTION", LANDSYSTEM)
+	else if yytext == "township" then suspend Token("TOWNSHIP", LANDSYSTEM)
+	else if yytext == "range" then suspend Token("RANGE", LANDSYSTEM)
+	else if yytext == "base" then suspend Token("BASE", LANDSYSTEM)
+	else if yytext == "meridian" then suspend Token("MERIDIAN", LANDSYSTEM)
+	
+	else if yytext == "of" then suspend Token("OF", REFERENCE)
+	else if yytext == "said" then suspend Token("SAID", REFERENCE)
+	else if yytext == "the" then suspend Token("THE", REFERENCE)
+	
+	
 	else suspend Token(yytext, DESCRIPTOR)
 end
 
@@ -92,16 +100,17 @@ procedure tokenizeLine(line)
 	line ? {
 		while tab(upto(text)) do {
 			(if yytext := tab(many(&letters)) then yytoken := parseWord() ) |
-			(if yytext := tab(many(&digits)) then yytoken := Token(string(yytext), 255) )|
+			(if yytext := tab(many(&digits)) then yytoken := Token("DIGITS", 255) )|
 			(if yytext := tab(any(punc)) then yytoken := Token(yytext, 200) )
-			write(yytoken.label)
+			suspend yytoken
 		}
 	}
 end
 
-class Token(label, pri)
+class Token(label, pri, val)
 
 initially(l, p)
 	label := l
 	pri := p
+	val := yytext
 end

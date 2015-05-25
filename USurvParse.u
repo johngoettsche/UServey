@@ -1,0 +1,155 @@
+version	U12.1.00
+uid	USurvParse.u1-1432422753-0
+impl	local
+link	C:/Users/John/Documents/GitHub/UServey/USurvLex.u
+global	1
+	0,000005,main,1
+
+proc main
+	local	0,001000,arg
+	local	1,000020,text
+	local	2,000020,filename
+	local	3,000020,file
+	local	4,000020,line
+	local	5,000020,token
+	local	6,000000,USurvLex__setGlobals
+	local	7,000000,open
+	local	8,000000,read
+	local	9,000000,USurvLex__tokenizeLine
+	local	10,000000,write
+	con	0,002000,1,1
+	con	1,010000,1,162
+	con	2,010000,2,011,011
+	declend
+	filen	USurvParse.icn
+	line	3
+	colm	11
+	synt	any
+	mark	L1
+	var	6
+	line	11
+	colm	29
+	synt	any
+	invoke	0
+	unmark
+lab L1
+	mark	L2
+	pnull
+	var	2
+	pnull
+	var	0
+	int	0
+	line	12
+	colm	24
+	synt	any
+	subsc
+	line	12
+	colm	18
+	synt	any
+	asgn
+	unmark
+lab L2
+	mark	L3
+	pnull
+	var	3
+	var	7
+	var	2
+	str	1
+	line	13
+	colm	21
+	synt	any
+	invoke	2
+	line	13
+	colm	14
+	synt	any
+	asgn
+	unmark
+lab L3
+	mark	L4
+lab L5
+	line	14
+	colm	9
+	synt	while
+	mark0
+	pnull
+	var	4
+	var	8
+	var	3
+	line	14
+	colm	27
+	synt	any
+	invoke	1
+	line	14
+	colm	20
+	synt	any
+	asgn
+	unmark
+	mark	L5
+	line	15
+	colm	17
+	synt	every
+	mark0
+	pnull
+	var	5
+	var	9
+	var	4
+	line	15
+	colm	54
+	synt	any
+	invoke	1
+	line	15
+	colm	29
+	synt	any
+	asgn
+	pop
+	mark0
+	var	10
+	pnull
+	pnull
+	pnull
+	var	5
+	line	16
+	colm	36
+	synt	any
+	field	label
+	str	2
+	line	16
+	colm	43
+	synt	any
+	cat
+	pnull
+	var	5
+	line	16
+	colm	61
+	synt	any
+	field	val
+	line	16
+	colm	53
+	synt	any
+	cat
+	line	16
+	colm	30
+	synt	any
+	invoke	1
+	unmark
+lab L8
+	efail
+lab L9
+	line	15
+	colm	17
+	synt	endevery
+lab L6
+	unmark
+	goto	L5
+lab L7
+	line	14
+	colm	9
+	synt	endwhile
+	unmark
+lab L4
+	pnull
+	line	19
+	colm	1
+	synt	any
+	pfail
+	end

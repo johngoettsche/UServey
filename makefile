@@ -1,11 +1,11 @@
-USurvLex : caseless.u USurvLex.u
-	unicon -o USurvLex caseless.u USurvLex.u
+USurvParse : USurvLex.u USurvParse.u
+	unicon -o USurvParse USurvLex.u USurvParse.u
+
+USurvParse.u : USurvParse.icn
+	unicon -c USurvParse.icn
 
 USurvLex.u : USurvLex.icn
 	unicon -c USurvLex.icn
-
-caseless.u : caseless.icn
-	unicon -c caseless.icn
 	
 clean:
 	rm -rf *u

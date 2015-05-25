@@ -1,0 +1,109 @@
+import USurvLex
+
+global
+	stack := []
+
+procedure main(arg)
+	local 
+		text,
+		filename,
+		file,
+		line,
+		token
+		
+	setGlobals()	
+	filename := arg[1]
+	file := open(filename, "r")
+	while line := read(file) do {
+		every token := tokenizeLine(line) do {
+			write(token.label || "\t\t" || token.val)
+			push(stack, token)
+			description()
+		}
+	}
+	result := pop(stack)
+	write(result.label || " " || result.val)
+end
+
+procedure line()
+	while stack[*stack - 5].label == "THENCE" | fail & 
+			\bound = boundary() | fail &
+			\dir = direction() | fail &
+			\dis = distance() | fail &
+			\dest = destination() |fail do 
+		replaceNodeWithValues(5, "line")
+end
+
+procedure boundary()
+	while stack[*stack - 2].label == "ALONG" | fail & 
+			\des := description() | fail do
+		replaceNodeWithValues(2, "boundary")
+end
+
+procedure direction()
+	while \bear := bearing() | fail do
+		replaceNodeWithValues(1, "direction")
+end
+
+procedure bearing()
+	while stack[*stack - 8].label == "NORTH" |
+			stack[*stack - 8].label == "SOUTH" | fail &
+			stack[*stack - 7].label == "DIGITS" | fail &
+			stack[*stack - 6].val == "d" | fail &
+			stack[*stack - 5].label == "DIGITS" | fail &
+			stack[*stack - 4].val == "\'" | fail &
+			stack[*stack - 3].label == "DIGITS" | fail &
+			stack[*stack - 2].val == "\""| fail & #"
+			stack[*stack - 1].label == "EAST" |
+			stack[*stack - 1].label == "WEST" | fail do
+		replaceNodeWithValues(8, "bearing")
+end
+
+procedure distance()
+	while stack[*stack - 3].label == "DIGITS" | fail &
+			stack[*stack - 2].val == "." | fail &
+			stack[*stack - 1].label == "DIGITS" | fail &
+		replaceNodeWithValues(1, "direction")
+end
+
+procedure destination()
+	while 
+end;
+
+procedure description()
+
+end
+
+procedure findTokenNumber(s)
+	count := 0
+	every t := !s do {
+	
+	}
+end
+
+procedure replaceNodeWithValues(i, n)
+	count := 0
+	value := ""
+	while count < i do {
+		N := pop(stack)
+		value := N.val || " " || value
+		count +:= 1
+	}
+	push(stack, Node(n, value))
+end
+
+procedure replaceNode(i, n)
+	count := 0
+	while count < i do {
+		pop(stack)
+		count +:= 1
+	}
+	push(stack, Node(n, ""))
+end
+
+class Node(label, val)
+
+initially(l, v)
+	label := l
+	val := v
+end
